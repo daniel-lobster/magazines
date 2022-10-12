@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <title>Magazines</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+      <div class="container">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="/magazines">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/magazines/new">Add Magazine</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/users/{{session.user_id}}/account">Account</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <h5 class="card-header">{{magazine.title}}</h5>
+            <div class="card-body">
+                <div class="mb-3">
+                  <p>Added by {{ magazine.creator_first_name }} {{ magazine.creator_last_name }}</p>
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="form-label">Description:</label>
+                  <p>{{ magazine.description }}</p>
+                </div>
+                <label for="description" class="form-label">Subscribers:</label>
+                {%for subscriber in magazine.subscribers%}
+                <div class="mb-3 d-flex">
+                  <p>{{ subscriber.first_name }} {{ subscriber.last_name }}</p>
+                </div>
+                {%endfor%}
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

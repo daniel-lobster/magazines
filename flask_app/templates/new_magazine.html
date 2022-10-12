@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <title>Magazines</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+      <div class="container">
+        <a class="navbar-brand" href="#">Add a Magazine</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="/magazines">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <h5 class="card-header">New Magazine</h5>
+            <div class="card-body">
+              <form action="/magazines/new" method="post">
+                <div class="mb-3">
+                  <label for="title" class="form-label">Title:</label>
+                  <input
+                    type="text"
+                    name="title"
+                    id="title"
+                    class="form-control"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="form-label">Description:</label>
+                  <textarea
+                    name="description"
+                    id="description"
+                    class="form-control" rows="3"
+                  ></textarea>
+                </div>
+                <div class="mb-3">
+                  <input
+                    type="hidden"
+                    name="creator_id"
+                    id="creator_id"
+                    class="form-control"
+                    value = "{{session.user_id}}"
+                  />
+                </div>
+                <div class="d-flex justify-content-end">
+                  <input
+                    type="submit"
+                    value="Add Magazine"
+                    class="btn btn-primary"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
